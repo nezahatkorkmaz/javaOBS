@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<!-- Nav Bar Fragment -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">OBS - Öğrenci Bilgi Sistemi</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/students}">Öğrenciler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/students/new}">Yeni Öğrenci</a>
+                </li>
+                <!-- More nav items can be added here -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

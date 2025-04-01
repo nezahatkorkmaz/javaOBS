@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${student.id} ? 'Öğrenci Düzenle' : 'Yeni Öğrenci'">Öğrenci Formu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<!-- Include Navigation Bar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 th:text="${student.id} ? 'Öğrenci Bilgilerini Düzenle' : 'Yeni Öğrenci Ekle'"></h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="${student.id} ? @{/students/update/{id}(id=${student.id})} : @{/students/save}"
+                          th:object="${student}" method="post">
+
+                        <input type="hidden" th:field="*{id}" />
+
+                        <!-- Student Information -->
+                        <div class="mb-3">
+                            <label for="studentNumber" class="form-label">Öğrenci Numarası</label>
+                            <input type="text" th:field="*{studentNumber}" class="form-control" id="studentNumber" placeholder="Örn: 1234567890">
+                            <div class="text-danger" th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">Ad</label>
+                                <input type="text" th:field="*{firstName}" class="form-control" id="firstName">
+                                <div class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Soyad</label>
+                                <input type="text" th:field="*{lastName}" class="form-control" id="lastName">
+                                <div class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" th:field="*{email}" class="form-control" id="email">
+                            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                        </div>
+
