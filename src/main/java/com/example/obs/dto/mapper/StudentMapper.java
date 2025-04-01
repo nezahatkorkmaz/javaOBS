@@ -17,8 +17,8 @@ public class StudentMapper {
         dto.setStudentNumber(student.getStudentNumber());
         dto.setEmail(student.getEmail());
         dto.setGpa(student.getGpa());
+        dto.setPhotoPath(student.getPhotoPath()); // Eklenen satır
 
-        // Map Address
         if (student.getAddress() != null) {
             dto.setCity(student.getAddress().getCity());
             dto.setDistrict(student.getAddress().getDistrict());
@@ -26,7 +26,6 @@ public class StudentMapper {
             dto.setPostalCode(student.getAddress().getPostalCode());
         }
 
-        // Map Department
         if (student.getDepartment() != null) {
             dto.setDepartmentId(student.getDepartment().getId());
             dto.setDepartmentName(student.getDepartment().getName());
@@ -43,8 +42,8 @@ public class StudentMapper {
         student.setStudentNumber(dto.getStudentNumber());
         student.setEmail(dto.getEmail());
         student.setGpa(dto.getGpa());
+        student.setPhotoPath(dto.getPhotoPath()); // Eklenen satır
 
-        // Map Address
         Address address = new Address();
         address.setCity(dto.getCity());
         address.setDistrict(dto.getDistrict());
@@ -52,17 +51,17 @@ public class StudentMapper {
         address.setPostalCode(dto.getPostalCode());
         student.setAddress(address);
 
-        // Department will be set by service
-
         return student;
     }
 
+
     public void updateEntityFromDTO(StudentDTO dto, Student student) {
         student.setFirstName(dto.getFirstName());
-        student.getClass(dto.getLastName());
+        student.setLastName(dto.getLastName());
         student.setStudentNumber(dto.getStudentNumber());
         student.setEmail(dto.getEmail());
         student.setGpa(dto.getGpa());
+        student.setPhotoPath(dto.getPhotoPath());
 
         // Update Address
         if (student.getAddress() == null) {

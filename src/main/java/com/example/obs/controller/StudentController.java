@@ -88,4 +88,10 @@ public class StudentController {
         model.addAttribute("department", department);
         return "student-list";
     }
+    @PostMapping("/students/save")
+    public String saveStudent(@ModelAttribute("student") StudentDTO studentDTO) {
+        studentService.save(studentDTO);
+        return "redirect:/students";
+    }
+
 }

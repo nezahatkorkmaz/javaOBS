@@ -34,4 +34,6 @@ public class Student {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id")
     private Department department;
+
+    private String photoPath; // Fotoğrafın kaydedildiği path
 }
