@@ -86,7 +86,7 @@ Tarayıcıda: `http://localhost:8080`
 | 🎓 Okul | Gazi Üniversitesi |
 | 🔮 Bölüm | Bilgisayar Mühendisliği |
 | 🗓️ Dönem | 2024-2025 Bahar |
-| 📨 Öğrenci No | 21181616029 |
+| 📨 Öğrenci Mail | nezahat.korkmaz@gazi.edu.tr |
 
 ---
 
