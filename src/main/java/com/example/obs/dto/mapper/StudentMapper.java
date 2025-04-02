@@ -17,8 +17,6 @@ public class StudentMapper {
         dto.setStudentNumber(student.getStudentNumber());
         dto.setEmail(student.getEmail());
         dto.setGpa(student.getGpa());
-        dto.setPhotoPath(student.getPhotoPath()); // Eklenen satır
-
         if (student.getAddress() != null) {
             dto.setCity(student.getAddress().getCity());
             dto.setDistrict(student.getAddress().getDistrict());
@@ -42,8 +40,6 @@ public class StudentMapper {
         student.setStudentNumber(dto.getStudentNumber());
         student.setEmail(dto.getEmail());
         student.setGpa(dto.getGpa());
-        student.setPhotoPath(dto.getPhotoPath()); // Eklenen satır
-
         Address address = new Address();
         address.setCity(dto.getCity());
         address.setDistrict(dto.getDistrict());
@@ -61,8 +57,6 @@ public class StudentMapper {
         student.setStudentNumber(dto.getStudentNumber());
         student.setEmail(dto.getEmail());
         student.setGpa(dto.getGpa());
-        student.setPhotoPath(dto.getPhotoPath());
-
         // Update Address
         if (student.getAddress() == null) {
             student.setAddress(new Address());

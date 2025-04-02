@@ -43,9 +43,6 @@
                 <tbody>
                 <tr th:each="student : ${students}">
                     <td th:text="${student.id}"></td>
-                    <td>
-                        <img th:src="@{'/uploads/' + ${student.photoPath}}" class="img-thumbnail" style="width: 50px; height: 50px;">
-                    </td>
                     <td th:text="${student.studentNumber}"></td>
                     <td th:text="${student.firstName}"></td>
                     <td th:text="${student.lastName}"></td>

@@ -69,25 +69,6 @@ public class StudentServiceImpl implements StudentService {
             student.setDepartment(department);
         }
 
-        // Handle photo upload
-        MultipartFile photoFile = studentDTO.getPhoto();
-        if (photoFile != null && !photoFile.isEmpty()) {
-            try {
-                String uploadsDir = "uploads/";
-                File uploadDir = new File(uploadsDir);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdirs();
-                }
-
-                String uniqueFilename = UUID.randomUUID() + "_" + photoFile.getOriginalFilename();
-                String filePath = uploadsDir + uniqueFilename;
-                photoFile.transferTo(new File(filePath));
-                student.setPhotoPath(filePath);
-
-            } catch (IOException e) {
-                throw new RuntimeException("Fotoğraf yüklenirken hata oluştu", e);
-            }
-        }
 
         Student savedStudent = studentRepository.save(student);
         return studentMapper.toDTO(savedStudent);
@@ -106,26 +87,6 @@ public class StudentServiceImpl implements StudentService {
             Department department = departmentRepository.findById(studentDTO.getDepartmentId())
                     .orElseThrow(() -> new EntityNotFoundException("Department not found with id: " + studentDTO.getDepartmentId()));
             student.setDepartment(department);
-        }
-
-        // Handle updated photo
-        MultipartFile photoFile = studentDTO.getPhoto();
-        if (photoFile != null && !photoFile.isEmpty()) {
-            try {
-                String uploadsDir = "uploads/";
-                File uploadDir = new File(uploadsDir);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdirs();
-                }
-
-                String uniqueFilename = UUID.randomUUID() + "_" + photoFile.getOriginalFilename();
-                String filePath = uploadsDir + uniqueFilename;
-                photoFile.transferTo(new File(filePath));
-                student.setPhotoPath(filePath);
-
-            } catch (IOException e) {
-                throw new RuntimeException("Fotoğraf güncellenirken hata oluştu", e);
-            }
         }
 
         Student updatedStudent = studentRepository.save(student);
